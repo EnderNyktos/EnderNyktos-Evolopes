@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>Evolopes</name>
+    <author>EnderNyktos</author>
+    <supportedVersions>
+        <li>1.4</li>
+        <li>1.5</li>
+    </supportedVersions>
+    <packageId>EnderNyktos.Evolopes</packageId>
+	
+	<description>
+Welcome,
+	</description>
+</ModMetaData>

@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<!-- EmptySerum -->
+	<ThingDef ParentName="MechSerumBase">
+    <defName>EmptyMechSerum</defName>
+    <label>empty mech serum</label>
+    <description>A used mech serum. There's nothing inside.</description>
+    <graphicData>
+      <texPath>Things/Item/Special/MechSerumHealer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>10</stackLimit>
+    <statBases>
+      <MarketValue>1000</MarketValue>
+    </statBases>
+    <thingCategories>
+      <li>Drugs</li>
+    </thingCategories>
+    <tradeability>Sellable</tradeability>
+	</ThingDef>
+
+	<!-- Boomalope MechSerum -->
+	<ThingDef ParentName="MechSerumBase">
+    <defName>BoomMechSerum</defName>
+    <label>boomalope mech serum</label>
+    <description>Used to inject chemfuel into a antelope. The boomalope produces chemfuel naturally.</description>
+    <graphicData>
+      <texPath>Things/Item/Special/MechSerumHealer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>10</stackLimit>
+    <statBases>
+      <MarketValue>1000</MarketValue>
+    </statBases>
+    <thingCategories>
+      <li>Drugs</li>
+    </thingCategories>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>Use {0_label}</useLabel>
+        <useDuration>600</useDuration>
+        <showUseGizmo>true</showUseGizmo>
+      </li>
+      <li Class="CompProperties_Targetable">
+        <compClass>CompTargetable_SinglePawn</compClass>
+      </li>
+	  <li Class="CompProperties_UseEffectAddHediff">
+        <hediffDef>InjectSerumBoom</hediffDef>
+      </li>
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardCore</li>
+    </thingSetMakerTags>
+  </ThingDef>
+  
+    <HediffDef>
+		<defName>InjectSerumBoom</defName>
+		<label>Injected with chemfuel</label>
+		<description>The material is being absorbed by the glands.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>	
+		<comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-4.00</severityPerDay>
+            </li>
+			
+        </comps>
+	</HediffDef>
+ 
+  <!-- Recipe -->	
+	<RecipeDef>
+		<defName>HackBoomMechSerum</defName>
+		<label>Craft 1 boomalope mech serum</label>
+		<description>The boomalope mech serum is used to inject chemfuel into an antelope's body to produce it.</description>
+		<jobString>Hacking the mech serum</jobString>
+		<workSpeedStat>ResearchSpeedFactor</workSpeedStat>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<workAmount>1200</workAmount>
+		<targetCountAdjustment>1</targetCountAdjustment>
+		<workSkill>Intellectual</workSkill>
+		<skillRequirements>
+			<Intellectual>7</Intellectual>
+		</skillRequirements>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>EmptyMechSerum</li>
+					</thingDefs>                    
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<products>
+			<Chemfuel>10</Chemfuel>
+		</products>
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+    </RecipeDef>
+
+	<!-- Chocolope MechSerum -->
+	<ThingDef ParentName="MechSerumBase">
+    <defName>ChocoMechSerum</defName>
+    <label>chocolope mech serum</label>
+    <description>Used to inject chocolate into a boomalope. The chocolope produces chocolate naturally.</description>
+    <graphicData>
+      <texPath>Things/Item/Special/MechSerumHealer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>10</stackLimit>
+    <statBases>
+      <MarketValue>1000</MarketValue>
+    </statBases>
+    <thingCategories>
+      <li>Drugs</li>
+    </thingCategories>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>Use {0_label}</useLabel>
+        <useDuration>600</useDuration>
+        <showUseGizmo>true</showUseGizmo>
+      </li>
+      <li Class="CompProperties_Targetable">
+        <compClass>CompTargetable_SinglePawn</compClass>
+      </li>
+	  <li Class="CompProperties_UseEffectAddHediff">
+        <hediffDef>InjectSerumChoco</hediffDef>
+      </li>
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardCore</li>
+    </thingSetMakerTags>
+  </ThingDef>
+    
+    <HediffDef>
+		<defName>InjectSerumChoco</defName>
+		<label>Injected with chocolate</label>
+		<description>The material is being absorbed by the glands.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>		
+		<comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-4.00</severityPerDay>
+            </li>
+        </comps>
+	</HediffDef>
+ 
+  <!-- Recipe -->	
+	<RecipeDef>
+		<defName>HackChocoMechSerum</defName>
+		<label>Craft 1 chocolope mech serum</label>
+		<description>The chocolope mech serum is used to inject chocolate in a boomalopes body and make it produce chocolate instead of chemfuel.</description>
+		<jobString>Hacking the healer mech serum</jobString>
+		<workSpeedStat>ResearchSpeedFactor</workSpeedStat>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<workAmount>1200</workAmount>
+		<targetCountAdjustment>1</targetCountAdjustment>
+		<workSkill>Intellectual</workSkill>
+		<skillRequirements>
+			<Intellectual>7</Intellectual>
+		</skillRequirements>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>EmptyMechSerum</li>
+					</thingDefs>                    
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<products>
+			<Chocolate>10</Chocolate>
+		</products>
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+    </RecipeDef>
+
+	<!-- Devilope MechSerum -->
+	<ThingDef ParentName="MechSerumBase">
+    <defName>DevilMechSerum</defName>
+    <label>devilope mech serum</label>
+    <description>Used to inject devilstrand into an antelope. The devilope produces raw fungus and devilstrand naturally.</description>
+    <graphicData>
+      <texPath>Things/Item/Special/MechSerumHealer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>10</stackLimit>
+    <statBases>
+      <MarketValue>1000</MarketValue>
+    </statBases>
+    <thingCategories>
+      <li>Drugs</li>
+    </thingCategories>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>Use {0_label}</useLabel>
+        <useDuration>600</useDuration>
+        <showUseGizmo>true</showUseGizmo>
+      </li>
+      <li Class="CompProperties_Targetable">
+        <compClass>CompTargetable_SinglePawn</compClass>
+      </li>
+	  <li Class="CompProperties_UseEffectAddHediff">
+        <hediffDef>InjectSerumChoco</hediffDef>
+      </li>
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardCore</li>
+    </thingSetMakerTags>
+  </ThingDef>
+  
+    <HediffDef>
+		<defName>InjectSerumDevil</defName>
+		<label>Injected with devilstrand</label>
+		<description>The material is being assimilated by the glands.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>		
+		<comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-4.00</severityPerDay>
+            </li>
+        </comps>
+	</HediffDef>
+ 
+  <!-- Recipe -->	
+	<RecipeDef>
+		<defName>HackDevilMechSerum</defName>
+		<label>Craft 1 devilope mech serum</label>
+		<description>The devilope mech serum is used to inject devilstrand into an antilope's body and make it produce raw fungus and devilstrand.</description>
+		<jobString>Hacking the healer mech serum</jobString>
+		<workSpeedStat>ResearchSpeedFactor</workSpeedStat>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<workAmount>1200</workAmount>
+		<targetCountAdjustment>1</targetCountAdjustment>
+		<workSkill>Intellectual</workSkill>
+		<skillRequirements>
+			<Intellectual>7</Intellectual>
+		</skillRequirements>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>EmptyMechSerum</li>
+					</thingDefs>                    
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<products>
+			<DevilstrandCloth>10</DevilstrandCloth>
+		</products>
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+    </RecipeDef>
+
+	<!-- Jellope MechSerum -->
+	<ThingDef ParentName="MechSerumBase">
+    <defName>JellyMechSerum</defName>
+    <label>jellope mech serum</label>
+    <description>Used to inject insect jelly into an antelope. The jellope produces insect jelly naturally.</description>
+    <graphicData>
+      <texPath>Things/Item/Special/MechSerumHealer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>10</stackLimit>
+    <statBases>
+      <MarketValue>1000</MarketValue>
+    </statBases>
+    <thingCategories>
+      <li>Drugs</li>
+    </thingCategories>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>Use {0_label}</useLabel>
+        <useDuration>600</useDuration>
+        <showUseGizmo>true</showUseGizmo>
+      </li>
+      <li Class="CompProperties_Targetable">
+        <compClass>CompTargetable_SinglePawn</compClass>
+      </li>
+	  <li Class="CompProperties_UseEffectAddHediff">
+        <hediffDef>InjectSerumJelly</hediffDef>
+      </li>
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardCore</li>
+    </thingSetMakerTags>
+  </ThingDef>
+   
+    <HediffDef>
+		<defName>InjectSerumJelly</defName>
+		<label>Injected with insect jelly</label>
+		<description>The material is being assimilated by the glands.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>		
+		<comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-4.00</severityPerDay>
+            </li>
+        </comps>
+	</HediffDef>
+ 
+  <!-- Recipe -->	
+	<RecipeDef>
+		<defName>HackJellyMechSerum</defName>
+		<label>Craft 1 jellope mech serum</label>
+		<description>The jellope mech serum is used to inject insect jelly into an antelope's body and make it produce insect jelly.</description>
+		<jobString>Hacking the healer mech serum</jobString>
+		<workSpeedStat>ResearchSpeedFactor</workSpeedStat>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<workAmount>1200</workAmount>
+		<targetCountAdjustment>1</targetCountAdjustment>
+		<workSkill>Intellectual</workSkill>
+		<skillRequirements>
+			<Intellectual>7</Intellectual>
+		</skillRequirements>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>EmptyMechSerum</li>
+					</thingDefs>                    
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<products>
+			<Chocolate>10</Chocolate>
+		</products>
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+    </RecipeDef>
+
+	<!-- Milkalope MechSerum -->
+	<ThingDef ParentName="MechSerumBase">
+    <defName>MilkMechSerum</defName>
+    <label>milkalope mech serum</label>
+    <description>Used to inject milk into an antelope. The milkalope produces milk naturally.</description>
+    <graphicData>
+      <texPath>Things/Item/Special/MechSerumHealer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>10</stackLimit>
+    <statBases>
+      <MarketValue>1000</MarketValue>
+    </statBases>
+    <thingCategories>
+      <li>Drugs</li>
+    </thingCategories>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>Use {0_label}</useLabel>
+        <useDuration>600</useDuration>
+        <showUseGizmo>true</showUseGizmo>
+      </li>
+      <li Class="CompProperties_Targetable">
+        <compClass>CompTargetable_SinglePawn</compClass>
+      </li>
+	  <li Class="CompProperties_UseEffectAddHediff">
+        <hediffDef>InjectSerumMilk</hediffDef>
+      </li>
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardCore</li>
+    </thingSetMakerTags>
+  </ThingDef>
+    
+    <HediffDef>
+		<defName>InjectSerumMilk</defName>
+		<label>Injected with milk</label>
+		<description>The material is being assimilated by the glands.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>		
+		<comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-4.00</severityPerDay>
+            </li>
+        </comps>
+	</HediffDef>
+ 
+  <!-- Recipe -->	
+	<RecipeDef>
+		<defName>HackMilkMechSerum</defName>
+		<label>Craft 1 milkalope mech serum</label>
+		<description>The milkalope mech serum is used to inject milk into an antelope's body and make it produce milk.</description>
+		<jobString>Hacking the healer mech serum</jobString>
+		<workSpeedStat>ResearchSpeedFactor</workSpeedStat>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<workAmount>1200</workAmount>
+		<targetCountAdjustment>1</targetCountAdjustment>
+		<workSkill>Intellectual</workSkill>
+		<skillRequirements>
+			<Intellectual>7</Intellectual>
+		</skillRequirements>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>EmptyMechSerum</li>
+					</thingDefs>                    
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<products>
+			<Chocolate>10</Chocolate>
+		</products>
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+    </RecipeDef>
+
+	<!-- Neutroalope MechSerum -->
+	<ThingDef ParentName="MechSerumBase">
+    <defName>NeutroMechSerum</defName>
+    <label>milkalope mech serum</label>
+    <description>Used to inject neutroamine into an antelope. The neutroalope produces neutroamine naturally.</description>
+    <graphicData>
+      <texPath>Things/Item/Special/MechSerumHealer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stackLimit>10</stackLimit>
+    <statBases>
+      <MarketValue>1000</MarketValue>
+    </statBases>
+    <thingCategories>
+      <li>Drugs</li>
+    </thingCategories>
+    <tradeability>Sellable</tradeability>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>Use {0_label}</useLabel>
+        <useDuration>600</useDuration>
+        <showUseGizmo>true</showUseGizmo>
+      </li>
+      <li Class="CompProperties_Targetable">
+        <compClass>CompTargetable_SinglePawn</compClass>
+      </li>
+	  <li Class="CompProperties_UseEffectAddHediff">
+        <hediffDef>InjectSerumNeutro</hediffDef>
+      </li>
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardCore</li>
+    </thingSetMakerTags>
+  </ThingDef>
+   
+    <HediffDef>
+		<defName>InjectSerumNeutro</defName>
+		<label>Injected with neutroamine</label>
+		<description>The material is being assimilated by the glands.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>		
+		<comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-4.00</severityPerDay>
+            </li>
+        </comps>
+	</HediffDef>
+ 
+  <!-- Recipe -->	
+	<RecipeDef>
+		<defName>HackNeutroMechSerum</defName>
+		<label>Craft 1 neutroalope mech serum</label>
+		<description>The neutroalope mech serum is used to inject neutroamine in an antelope's body and make it produce neutroamine.</description>
+		<jobString>Hacking the healer mech serum</jobString>
+		<workSpeedStat>ResearchSpeedFactor</workSpeedStat>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<workAmount>1200</workAmount>
+		<targetCountAdjustment>1</targetCountAdjustment>
+		<workSkill>Intellectual</workSkill>
+		<skillRequirements>
+			<Intellectual>7</Intellectual>
+		</skillRequirements>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>EmptyMechSerum</li>
+					</thingDefs>                    
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<products>
+			<Chocolate>10</Chocolate>
+		</products>
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+    </RecipeDef>
+</Defs>
