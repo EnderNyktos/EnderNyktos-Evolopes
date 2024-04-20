@@ -54,6 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EvoJobs.cs" />
+    <Compile Include="EvolopeMechSerum.cs" />
     <Compile Include="HediffEvolopes.cs" />
     <Compile Include="DefEvolopes.cs" />
     <Compile Include="Evolopes.cs" />

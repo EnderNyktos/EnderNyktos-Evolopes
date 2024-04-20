@@ -165,6 +165,7 @@ namespace Evolopes
             IntVec3 position = pawn.Position;
             Map map = pawn.Map;
             Gender gender = pawn.gender;
+            Pawn_AgeTracker age = pawn.ageTracker;
             Faction ofPlayer = Find.FactionManager.OfPlayer;
             if (pawn.Map == null)
             {
@@ -175,7 +176,7 @@ namespace Evolopes
             {
                 Pawn obj1 = PawnGenerator.GeneratePawn(EvolopesDefOf.EvoMilkalope, ofPlayer);
                 obj1.gender = gender;
-                obj1.ageTracker = pawn.ageTracker;
+                obj1.ageTracker = age;
                 GenSpawn.Spawn(obj1, position, map);
             }
             {
@@ -199,6 +200,7 @@ namespace Evolopes
             IntVec3 position = pawn.Position;
             Map map = pawn.Map;
             Gender gender = pawn.gender;
+            Pawn_AgeTracker age = pawn.ageTracker;
             Faction ofPlayer = Find.FactionManager.OfPlayer;
             if (pawn.Map == null)
             {
@@ -209,7 +211,7 @@ namespace Evolopes
             {
                 Pawn obj1 = PawnGenerator.GeneratePawn(EvolopesDefOf.EvoNeutroalope, ofPlayer);
                 obj1.gender = gender;
-                obj1.ageTracker = pawn.ageTracker;
+                obj1.ageTracker = age;
                 GenSpawn.Spawn(obj1, position, map);
             }
             {
@@ -218,6 +220,41 @@ namespace Evolopes
             }
             FilthMaker.TryMakeFilth(position, map, ThingDefOf.Filth_Water, new IntRange(3, 6).RandomInRange, FilthSourceFlags.None);
             pawn.Destroy();
+        }
+    }
+    public class Hediff_InjectSerumLuci : HediffWithComps
+    {
+        public override void Tick()
+        {
+            base.Tick();
+            if ((double)Severity < 0.99)
+            {
+                return;
+            }
+            IntVec3 position = pawn.Position;
+            Map map = pawn.Map;
+            Gender gender = pawn.gender;
+            Pawn_AgeTracker age = pawn.ageTracker;
+            Faction ofPlayer = Find.FactionManager.OfPlayer;
+            if (pawn.Map == null)
+            {
+                return;
+            }
+
+            if (pawn.kindDef == EvolopesDefOf.Boomalope || pawn.kindDef == EvolopesDefOf.EvoChocolope || pawn.kindDef == EvolopesDefOf.EvoDevilope || pawn.kindDef == EvolopesDefOf.EvoJellope || pawn.kindDef == EvolopesDefOf.EvoMilkalope || pawn.kindDef == EvolopesDefOf.EvoNeutroalope)
+            {
+                Pawn obj1 = PawnGenerator.GeneratePawn(EvolopesDefOf.EvoMegaLuciferope, ofPlayer);
+                obj1.gender = gender;
+                obj1.ageTracker = age;
+                GenSpawn.Spawn(obj1, position, map);
+            }
+            {
+                Thing obj2 = ThingMaker.MakeThing(EvolopesDefOf.EmptyMechSerum);
+                GenSpawn.Spawn(obj2, position, map);
+            }
+            FilthMaker.TryMakeFilth(position, map, ThingDefOf.Filth_Water, new IntRange(3, 6).RandomInRange, FilthSourceFlags.None);
+            pawn.Destroy();
+
         }
     }
 }

@@ -54,4 +54,12 @@ namespace Evolopes
             compClass = typeof(Hediff_InjectSerumNeutro);
         }
     }
+
+    public class HediffCompProperties_InjectSerumLuci : HediffCompProperties
+    {
+        public HediffCompProperties_InjectSerumLuci()
+        {
+            compClass = typeof(Hediff_InjectSerumLuci);
+        }
+    }
 }
